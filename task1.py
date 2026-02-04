@@ -1,7 +1,9 @@
 def total_salary(path: str) -> tuple:
     """
     Calculates total and average salary from a file.
-    Returns integers.
+
+    :param path: Path to the salary file
+    :return: Tuple (total_salary, average_salary)
     """
     try:
         total = 0
@@ -13,19 +15,23 @@ def total_salary(path: str) -> tuple:
                 if not line:
                     continue
 
-                _, salary = line.split(",") # splitting data by comma in each line
+                _, salary = line.split(",")
                 total += int(salary)
                 count += 1
 
         if count == 0:
-            return (0, 0)
+            return 0, 0
 
-        average = total // count   # ← to ensure average is an integer
-        return (total, average)
+        average = total // count
+        return total, average
 
-    except FileNotFoundError:
-        return (0, 0)
-    except (ValueError, OSError):
-        return (0, 0)
-    
+    except (FileNotFoundError, ValueError, OSError):
+        return 0, 0
 
+
+if __name__ == "__main__":
+    total, average = total_salary("salary.txt")
+    print(
+        f"Загальна сума заробітної плати: {total}, "
+        f"Середня заробітна плата: {average}"
+    )
