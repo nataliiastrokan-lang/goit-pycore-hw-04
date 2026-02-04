@@ -1,7 +1,7 @@
 def total_salary(path: str) -> tuple:
     """
     Calculates total and average salary from a file.
-    Returns integers as required by the task.
+    Returns integers.
     """
     try:
         total = 0
